@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Gallery</title>
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --accent-color: #0070f3;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Responsive 2x2 Grid that scales down to 1 column on mobile */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Card container for each model */
+        .model-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* The 3D Viewer styles */
+        model-viewer {
+            width: 100%;
+            height: 300px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            --poster-color: transparent;
+            transition: height 0.3s ease;
+        }
+
+        .model-title {
+            margin: 12px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Enlarge Button Styles */
+        .enlarge-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .enlarge-btn:hover {
+            background-color: #0051b3;
+        }
+
+        .enlarge-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* ---- FULL SCREEN / ENLARGED STATE ---- */
+        /* When this class is added via JavaScript, the card takes over the screen */
+        .model-card.enlarged {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            box-sizing: border-box;
+            border-radius: 0;
+            padding: 40px;
+            justify-content: center;
+        }
+
+        .model-card.enlarged model-viewer {
+            height: 75vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My 3D Model Showcase</h1>
+
+    <div class="grid-container">
+
+        <div class="model-card">
+            <model-viewer 
+                src="model1.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 1">
+            </model-viewer>
+            <div class="model-title">Model One</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
+
+        <div class="model-card">
+            <model-viewer 
+                src="model2.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 2">
+            </model-viewer>
+            <div class="model-title">Model Two</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
+
+        <div class="model-card">
+            <model-viewer 
+                src="model3.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 3">
+            </model-viewer>
+            <div class="model-title">Model Three</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
+
+        <div class="model-card">
+            <model-viewer 
+                src="model4.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 4">
+            </model-viewer>
+            <div class="model-title">Model Four</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
+
+    </div>
+
+    <script>
+        // JavaScript function to handle the Enlarge / Minimize actions
+        function toggleEnlarge(button) {
+            // Find the specific card this button belongs to
+            const card = button.parentElement;
+            
+            // Toggle the 'enlarged' CSS class
+            card.classList.toggle('enlarged');
+            
+            // Change button text based on the state
+            if (card.classList.contains('enlarged')) {
+                button.textContent = "Close / Minimize";
+                button.style.backgroundColor = "#ff3b30"; // turn button red when open
+            } else {
+                button.textContent = "Enlarge";
+                button.style.backgroundColor = "var(--accent-color)"; // return to blue
+            }
+        }
+    </script>
+</body>
+</html>

@@ -31,7 +31,7 @@
             text-align: center;
         }
 
-        /* Responsive 2x2 Grid that scales down to 1 column on mobile */
+        /* Responsive Grid that scales cleanly from 1 column up to multiple columns */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -91,7 +91,6 @@
         }
 
         /* ---- FULL SCREEN / ENLARGED STATE ---- */
-        /* When this class is added via JavaScript, the card takes over the screen */
         .model-card.enlarged {
             position: fixed;
             top: 0;
@@ -165,7 +164,65 @@
             <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
         </div> 
 
+        <div class="model-card">
+            <model-viewer 
+                src="model5.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 5">
+            </model-viewer>
+            <div class="model-title">Model Five</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
 
+        <div class="model-card">
+            <model-viewer 
+                src="model6.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 6">
+            </model-viewer>
+            <div class="model-title">Model Six</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
+
+        <div class="model-card">
+            <model-viewer 
+                src="model7.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 7">
+            </model-viewer>
+            <div class="model-title">Model Seven</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
+
+        <div class="model-card">
+            <model-viewer 
+                src="model8.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 8">
+            </model-viewer>
+            <div class="model-title">Model Eight</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
+
+        <div class="model-card">
+            <model-viewer 
+                src="model9.glb" 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                alt="A 3D model of item 9">
+            </model-viewer>
+            <div class="model-title">Model Nine</div>
+            <button class="enlarge-btn" onclick="toggleEnlarge(this)">Enlarge</button>
+        </div>
         
     </div>
 
